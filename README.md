@@ -25,7 +25,7 @@ It uses H2 in-memory db, Lombok and Swagger.
 ## Database
 
 - go to http://localhost:8080/h2-console
-- connect to `jdbc:h2:mem:testdb`, username: `sa`, password: ``
+- connect to `jdbc:h2:mem:testdb`, username: `sa`, password: 
 
 ```sql
 SELECT * FROM BLOG_POST ;
