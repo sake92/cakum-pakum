@@ -6,10 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel(description="Create model for blog post")
+@ApiModel(description = "Create model for blog post")
 public class CreateBlogPostDto {
 
     @NotBlank
-    @ApiModelProperty(example="My first blog post")
+    @ApiModelProperty(example = "My first blog post")
     private String content;
 }

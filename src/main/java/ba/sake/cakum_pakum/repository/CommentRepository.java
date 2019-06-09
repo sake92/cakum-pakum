@@ -9,7 +9,5 @@ import ba.sake.cakum_pakum.model.Comment;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    
-    
     List<Comment> findByBlogPost(BlogPost blogPost);
 }

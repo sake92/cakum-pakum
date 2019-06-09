@@ -45,9 +45,10 @@ public class BlogPostResource {
     public List<CommentDto> findCommentsById(@PathVariable Long blogPostId) {
         return commentService.findByBlogPostId(blogPostId);
     }
-    
+
     @PostMapping("/{blogPostId}/comments")
-    public CommentDto create(@PathVariable Long blogPostId, @Valid @RequestBody CreateCommentDto dto) {
+    public CommentDto create(@PathVariable Long blogPostId,
+            @Valid @RequestBody CreateCommentDto dto) {
         return commentService.create(blogPostId, dto);
     }
 

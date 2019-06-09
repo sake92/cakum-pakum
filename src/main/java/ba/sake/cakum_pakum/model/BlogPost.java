@@ -18,7 +18,7 @@ public class BlogPost {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String content;
 
     @OneToMany(cascade = CascadeType.ALL)
