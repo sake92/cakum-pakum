@@ -43,12 +43,12 @@ public class BlogPostResource {
 
     /* comments */
     @GetMapping("/{blogPostId}/comments")
-    public List<CommentResponse> findCommentsById(@PathVariable Long blogPostId) {
+    public List<CommentResponse> findCommentsByBlogPostId(@PathVariable Long blogPostId) {
         return commentService.findByBlogPostId(blogPostId);
     }
 
     @PostMapping("/{blogPostId}/comments")
-    public CommentResponse create(@PathVariable Long blogPostId,
+    public CommentResponse addComment(@PathVariable Long blogPostId,
             @Valid @RequestBody CreateCommentRequest createCommentRequest) {
         return commentService.create(blogPostId, createCommentRequest);
     }
