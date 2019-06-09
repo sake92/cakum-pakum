@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.model;
+package ba.sake.cakum_pakum.rdb.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,14 +9,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Comment {
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    private BlogPost blogPost;
+    private BlogPostEntity blogPost;
 
     private String content;
 }

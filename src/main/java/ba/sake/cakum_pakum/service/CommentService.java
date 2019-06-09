@@ -1,14 +1,14 @@
 package ba.sake.cakum_pakum.service;
 
 import java.util.List;
-import ba.sake.cakum_pakum.rest.models.comment.CommentDto;
-import ba.sake.cakum_pakum.rest.models.comment.CreateCommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CommentResponse;
+import ba.sake.cakum_pakum.rest.models.comment.CreateCommentRequest;
 
 public interface CommentService {
 
-    CommentDto create(Long blogPostId, CreateCommentDto dto);
+    CommentResponse create(Long blogPostId, CreateCommentRequest createCommentRequest);
 
-    CommentDto findById(Long id);
+    CommentResponse findById(Long id);
 
-    List<CommentDto> findByBlogPostId(Long blogPostId);
+    List<CommentResponse> findByBlogPostId(Long blogPostId);
 }

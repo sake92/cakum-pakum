@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class CreateCommentDto {
+public class CreateCommentRequest {
 
     @NotBlank
     private String content;

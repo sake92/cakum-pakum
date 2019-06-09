@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.model;
+package ba.sake.cakum_pakum.rdb.models;
 
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class BlogPost {
+public class BlogPostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +22,6 @@ public class BlogPost {
     private String content;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Comment> comments;
+    private List<CommentEntity> comments;
 
 }

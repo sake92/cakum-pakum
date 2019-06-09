@@ -1,15 +1,15 @@
 package ba.sake.cakum_pakum.service;
 
 import java.util.List;
-import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostDto;
-import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostDto;
+import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostResponse;
+import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostRequest;
 
 public interface BlogPostService {
 
-    BlogPostDto create(CreateBlogPostDto dto);
+    BlogPostResponse create(CreateBlogPostRequest createBlogPostRequest);
 
-    List<BlogPostDto> findAll();
+    List<BlogPostResponse> findAll();
 
-    BlogPostDto findById(Long id);
+    BlogPostResponse findById(Long id);
 
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @ApiModel(description = "Create model for blog post")
-public class CreateBlogPostDto {
+public class CreateBlogPostRequest {
 
     @NotBlank
     @ApiModelProperty(example = "My first blog post")
