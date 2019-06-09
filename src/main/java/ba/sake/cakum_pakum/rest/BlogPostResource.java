@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ba.sake.cakum_pakum.dto.blogpost.BlogPostDto;
-import ba.sake.cakum_pakum.dto.blogpost.CreateBlogPostDto;
-import ba.sake.cakum_pakum.dto.comment.CommentDto;
-import ba.sake.cakum_pakum.dto.comment.CreateCommentDto;
+import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostDto;
+import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostDto;
+import ba.sake.cakum_pakum.rest.models.comment.CommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CreateCommentDto;
 import ba.sake.cakum_pakum.service.BlogPostService;
 import ba.sake.cakum_pakum.service.CommentService;
 

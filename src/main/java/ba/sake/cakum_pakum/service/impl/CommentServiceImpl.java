@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ba.sake.cakum_pakum.dto.comment.CommentDto;
-import ba.sake.cakum_pakum.dto.comment.CreateCommentDto;
 import ba.sake.cakum_pakum.mapper.CommentMapper;
 import ba.sake.cakum_pakum.model.BlogPost;
 import ba.sake.cakum_pakum.model.Comment;
 import ba.sake.cakum_pakum.repository.BlogPostRepository;
 import ba.sake.cakum_pakum.repository.CommentRepository;
+import ba.sake.cakum_pakum.rest.models.comment.CommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CreateCommentDto;
 import ba.sake.cakum_pakum.service.CommentService;
 import ba.sake.cakum_pakum.utils.ExceptionUtils;
 

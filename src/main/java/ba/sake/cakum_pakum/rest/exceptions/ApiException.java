@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.exception;
+package ba.sake.cakum_pakum.rest.exceptions;
 
 public abstract class ApiException extends RuntimeException {
 

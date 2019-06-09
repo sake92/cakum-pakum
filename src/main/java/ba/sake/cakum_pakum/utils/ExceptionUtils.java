@@ -2,9 +2,9 @@ package ba.sake.cakum_pakum.utils;
 
 import java.text.MessageFormat;
 import org.springframework.stereotype.Component;
-import ba.sake.cakum_pakum.exception.AlreadyExistsException;
-import ba.sake.cakum_pakum.exception.ApiException;
-import ba.sake.cakum_pakum.exception.NotFoundException;
+import ba.sake.cakum_pakum.rest.exceptions.AlreadyExistsException;
+import ba.sake.cakum_pakum.rest.exceptions.ApiException;
+import ba.sake.cakum_pakum.rest.exceptions.NotFoundException;
 
 @Component
 public class ExceptionUtils {

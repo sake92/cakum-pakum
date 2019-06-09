@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ba.sake.cakum_pakum.dto.blogpost.BlogPostDto;
-import ba.sake.cakum_pakum.dto.blogpost.CreateBlogPostDto;
 import ba.sake.cakum_pakum.mapper.BlogPostMapper;
 import ba.sake.cakum_pakum.model.BlogPost;
 import ba.sake.cakum_pakum.repository.BlogPostRepository;
+import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostDto;
+import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostDto;
 import ba.sake.cakum_pakum.service.BlogPostService;
 import ba.sake.cakum_pakum.utils.ExceptionUtils;
 

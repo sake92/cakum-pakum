@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ba.sake.cakum_pakum.dto.comment.CommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CommentDto;
 import ba.sake.cakum_pakum.service.CommentService;
 
 @RestController

@@ -1,9 +1,9 @@
 package ba.sake.cakum_pakum.mapper;
 
 import org.springframework.stereotype.Component;
-import ba.sake.cakum_pakum.dto.blogpost.BlogPostDto;
-import ba.sake.cakum_pakum.dto.blogpost.CreateBlogPostDto;
 import ba.sake.cakum_pakum.model.BlogPost;
+import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostDto;
+import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostDto;
 
 @Component
 public class BlogPostMapper {

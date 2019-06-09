@@ -1,9 +1,9 @@
 package ba.sake.cakum_pakum.mapper;
 
 import org.springframework.stereotype.Component;
-import ba.sake.cakum_pakum.dto.comment.CommentDto;
-import ba.sake.cakum_pakum.dto.comment.CreateCommentDto;
 import ba.sake.cakum_pakum.model.Comment;
+import ba.sake.cakum_pakum.rest.models.comment.CommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CreateCommentDto;
 
 @Component
 public class CommentMapper {

@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.dto.blogpost;
+package ba.sake.cakum_pakum.rest.models.blogpost;
 
 import javax.validation.constraints.NotBlank;
 import io.swagger.annotations.ApiModel;

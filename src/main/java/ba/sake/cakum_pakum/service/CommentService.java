@@ -1,8 +1,8 @@
 package ba.sake.cakum_pakum.service;
 
 import java.util.List;
-import ba.sake.cakum_pakum.dto.comment.CommentDto;
-import ba.sake.cakum_pakum.dto.comment.CreateCommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CommentDto;
+import ba.sake.cakum_pakum.rest.models.comment.CreateCommentDto;
 
 public interface CommentService {
 

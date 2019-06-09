@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.dto.comment;
+package ba.sake.cakum_pakum.rest.models.comment;
 
 import lombok.Data;
 

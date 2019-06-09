@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.exception;
+package ba.sake.cakum_pakum.rest.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
