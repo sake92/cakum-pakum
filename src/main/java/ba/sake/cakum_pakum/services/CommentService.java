@@ -7,20 +7,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 import ba.sake.cakum_pakum.rdb.models.CommentEntity;
-import ba.sake.cakum_pakum.rdb.repositories.BlogPostRdbRepository;
-import ba.sake.cakum_pakum.rdb.repositories.CommentRdbRepository;
+import ba.sake.cakum_pakum.rdb.repositories.BlogPostRepository;
+import ba.sake.cakum_pakum.rdb.repositories.CommentRepository;
 import ba.sake.cakum_pakum.utils.ExceptionUtils;
 
 @Service
 @Transactional
 public class CommentService {
 
-    private BlogPostRdbRepository blogPostRepository;
-    private CommentRdbRepository commentRepository;
+    private BlogPostRepository blogPostRepository;
+    private CommentRepository commentRepository;
     private ExceptionUtils exceptionUtils;
 
-    public CommentService(BlogPostRdbRepository blogPostRepository,
-            CommentRdbRepository commentRepository, ExceptionUtils exceptionUtils) {
+    public CommentService(BlogPostRepository blogPostRepository,
+            CommentRepository commentRepository, ExceptionUtils exceptionUtils) {
         this.blogPostRepository = blogPostRepository;
         this.commentRepository = commentRepository;
         this.exceptionUtils = exceptionUtils;

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 
 @Repository
-public interface BlogPostRdbRepository extends JpaRepository<BlogPostEntity, Long> {
+public interface BlogPostRepository extends JpaRepository<BlogPostEntity, Long> {
 
     BlogPostEntity findOneByContent(String content);
 }

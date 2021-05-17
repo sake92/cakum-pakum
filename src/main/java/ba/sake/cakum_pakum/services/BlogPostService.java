@@ -5,17 +5,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
-import ba.sake.cakum_pakum.rdb.repositories.BlogPostRdbRepository;
+import ba.sake.cakum_pakum.rdb.repositories.BlogPostRepository;
 import ba.sake.cakum_pakum.utils.ExceptionUtils;
 
 @Service
 @Transactional
 public class BlogPostService {
 
-    private BlogPostRdbRepository blogPostRepository;
+    private BlogPostRepository blogPostRepository;
     private ExceptionUtils exceptionUtils;
 
-    public BlogPostService(BlogPostRdbRepository blogPostRepository,
+    public BlogPostService(BlogPostRepository blogPostRepository,
             ExceptionUtils exceptionUtils) {
         this.blogPostRepository = blogPostRepository;
         this.exceptionUtils = exceptionUtils;

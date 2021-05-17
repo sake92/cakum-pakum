@@ -8,7 +8,7 @@ import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 import ba.sake.cakum_pakum.rdb.models.CommentEntity;
 
 @Repository
-public interface CommentRdbRepository extends JpaRepository<CommentEntity, Long> {
+public interface CommentRepository extends JpaRepository<CommentEntity, Long> {
 
     Page<CommentEntity> findByBlogPost(BlogPostEntity blogPost, Pageable pageable);
 }
