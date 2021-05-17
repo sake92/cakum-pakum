@@ -1,15 +1,14 @@
 package ba.sake.cakum_pakum.rest.models.blogpost;
 
 import javax.validation.constraints.NotBlank;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "Create model for blog post")
+@Schema(description = "Create model for blog post")
 public class CreateBlogPostRequest {
 
     @NotBlank
-    @ApiModelProperty(example = "My first blog post")
+    @Schema(example = "My first blog post")
     private String content;
 }
