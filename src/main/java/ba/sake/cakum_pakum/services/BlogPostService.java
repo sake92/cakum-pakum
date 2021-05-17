@@ -6,19 +6,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 import ba.sake.cakum_pakum.rdb.repositories.BlogPostRepository;
-import ba.sake.cakum_pakum.utils.ExceptionUtils;
+import ba.sake.cakum_pakum.rest.exceptions.AlreadyExistsProblem;
+import ba.sake.cakum_pakum.rest.exceptions.NotFoundProblem;
 
 @Service
 @Transactional
 public class BlogPostService {
 
     private BlogPostRepository blogPostRepository;
-    private ExceptionUtils exceptionUtils;
 
-    public BlogPostService(BlogPostRepository blogPostRepository,
-            ExceptionUtils exceptionUtils) {
+    public BlogPostService(BlogPostRepository blogPostRepository) {
         this.blogPostRepository = blogPostRepository;
-        this.exceptionUtils = exceptionUtils;
     }
 
     public BlogPostEntity create(BlogPostEntity blogPost) {
@@ -32,13 +30,13 @@ public class BlogPostService {
 
     public BlogPostEntity findById(Long id) {
         var maybeBlogPost = blogPostRepository.findById(id);
-        return maybeBlogPost.orElseThrow(() -> exceptionUtils.notFound("Blog post", id));
+        return maybeBlogPost.orElseThrow(() -> new NotFoundProblem("Blog post", id));
     }
 
     private void checkUnique(String content) {
         BlogPostEntity existingBlogPost = blogPostRepository.findOneByContent(content);
         if (existingBlogPost != null) {
-            throw exceptionUtils.alreadyExists("Blog post", "content", content);
+            throw new AlreadyExistsProblem("Blog post", "content", content);
         }
     }
 
