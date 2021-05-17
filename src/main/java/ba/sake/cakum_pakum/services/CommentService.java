@@ -2,7 +2,6 @@ package ba.sake.cakum_pakum.services;
 
 import java.util.Optional;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,12 +15,16 @@ import ba.sake.cakum_pakum.utils.ExceptionUtils;
 @Transactional
 public class CommentService {
 
-    @Autowired
     private BlogPostRdbRepository blogPostRepository;
-    @Autowired
     private CommentRdbRepository commentRepository;
-    @Autowired
     private ExceptionUtils exceptionUtils;
+
+    public CommentService(BlogPostRdbRepository blogPostRepository,
+            CommentRdbRepository commentRepository, ExceptionUtils exceptionUtils) {
+        this.blogPostRepository = blogPostRepository;
+        this.commentRepository = commentRepository;
+        this.exceptionUtils = exceptionUtils;
+    }
 
     public CommentEntity create(Long blogPostId, CommentEntity comment) {
 
@@ -43,7 +46,6 @@ public class CommentService {
         return commentRepository.findByBlogPost(blogPost, Pageable.unpaged());
     }
 
-    /* helpers */
     private BlogPostEntity findBlogPostById(Long blogPostId) {
 
         Optional<BlogPostEntity> maybeBlogPost = blogPostRepository.findById(blogPostId);

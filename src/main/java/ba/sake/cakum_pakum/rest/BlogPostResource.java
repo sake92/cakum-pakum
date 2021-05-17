@@ -1,7 +1,6 @@
 package ba.sake.cakum_pakum.rest;
 
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,15 +21,19 @@ import ba.sake.cakum_pakum.services.CommentService;
 @RequestMapping("/posts")
 public class BlogPostResource {
 
-    @Autowired
     private BlogPostService blogPostService;
-    @Autowired
     private CommentService commentService;
 
-    @Autowired
     private BlogPostMapper blogPostMapper;
-    @Autowired
     private CommentMapper commentMapper;
+
+    public BlogPostResource(BlogPostService blogPostService, CommentService commentService,
+            BlogPostMapper blogPostMapper, CommentMapper commentMapper) {
+        this.blogPostService = blogPostService;
+        this.commentService = commentService;
+        this.blogPostMapper = blogPostMapper;
+        this.commentMapper = commentMapper;
+    }
 
     @PostMapping
     public BlogPostResponse create(

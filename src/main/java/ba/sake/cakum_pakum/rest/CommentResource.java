@@ -1,6 +1,5 @@
 package ba.sake.cakum_pakum.rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +12,14 @@ import ba.sake.cakum_pakum.services.CommentService;
 @RequestMapping("/comments")
 public class CommentResource {
 
-    @Autowired
     private CommentService commentService;
 
-    @Autowired
     private CommentMapper commentMapper;
+
+    public CommentResource(CommentService commentService, CommentMapper commentMapper) {
+        this.commentService = commentService;
+        this.commentMapper = commentMapper;
+    }
 
     @GetMapping("/{id}")
     public CommentResponse findById(@PathVariable Long id) {
