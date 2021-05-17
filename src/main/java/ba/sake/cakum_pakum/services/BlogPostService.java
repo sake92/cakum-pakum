@@ -34,7 +34,7 @@ public class BlogPostService {
     }
 
     private void checkUnique(String content) {
-        BlogPostEntity existingBlogPost = blogPostRepository.findOneByContent(content);
+        var existingBlogPost = blogPostRepository.findOneByContent(content);
         if (existingBlogPost != null) {
             throw new AlreadyExistsProblem("Blog post", "content", content);
         }

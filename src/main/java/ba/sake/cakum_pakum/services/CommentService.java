@@ -34,7 +34,7 @@ public class CommentService {
 
     public CommentEntity findById(Long id) {
 
-        Optional<CommentEntity> maybeComment = commentRepository.findById(id);
+        var maybeComment = commentRepository.findById(id);
         return maybeComment.orElseThrow(() -> new NotFoundProblem("Comment", id));
     }
 
@@ -46,7 +46,7 @@ public class CommentService {
 
     private BlogPostEntity findBlogPostById(Long blogPostId) {
 
-        Optional<BlogPostEntity> maybeBlogPost = blogPostRepository.findById(blogPostId);
+        var maybeBlogPost = blogPostRepository.findById(blogPostId);
         return maybeBlogPost.orElseThrow(() -> new NotFoundProblem("Blog post", blogPostId));
     }
 

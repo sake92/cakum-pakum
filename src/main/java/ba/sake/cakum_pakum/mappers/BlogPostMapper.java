@@ -9,14 +9,14 @@ import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostRequest;
 public class BlogPostMapper {
 
     public BlogPostResponse entity2Response(BlogPostEntity entity) {
-        BlogPostResponse response = new BlogPostResponse();
+        var response = new BlogPostResponse();
         response.setId(entity.getId());
         response.setContent(entity.getContent());
         return response;
     }
 
     public BlogPostEntity createRequest2Entity(CreateBlogPostRequest request) {
-        BlogPostEntity entity = new BlogPostEntity();
+        var entity = new BlogPostEntity();
         entity.setContent(request.getContent());
         return entity;
     }
