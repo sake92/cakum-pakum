@@ -1,6 +1,5 @@
 package ba.sake.cakum_pakum.services;
 
-import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,19 +9,15 @@ import ba.sake.cakum_pakum.rdb.models.CommentEntity;
 import ba.sake.cakum_pakum.rdb.repositories.BlogPostRepository;
 import ba.sake.cakum_pakum.rdb.repositories.CommentRepository;
 import ba.sake.cakum_pakum.rest.exceptions.NotFoundProblem;
+import lombok.RequiredArgsConstructor;
 
-@Service
 @Transactional
+@Service
+@RequiredArgsConstructor
 public class CommentService {
 
-    private BlogPostRepository blogPostRepository;
-    private CommentRepository commentRepository;
-
-    public CommentService(BlogPostRepository blogPostRepository,
-            CommentRepository commentRepository) {
-        this.blogPostRepository = blogPostRepository;
-        this.commentRepository = commentRepository;
-    }
+    private final BlogPostRepository blogPostRepository;
+    private final CommentRepository commentRepository;
 
     public CommentEntity create(Long blogPostId, CommentEntity comment) {
 

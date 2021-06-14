@@ -39,11 +39,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.zalando</groupId>
-			<artifactId>problem-spring-web</artifactId>
+			<artifactId>problem-spring-web-starter</artifactId>
 			<version>0.26.2</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springdoc</groupId>

@@ -7,19 +7,16 @@ import org.springframework.web.bind.annotation.RestController;
 import ba.sake.cakum_pakum.mappers.CommentMapper;
 import ba.sake.cakum_pakum.rest.models.comment.CommentResponse;
 import ba.sake.cakum_pakum.services.CommentService;
+import lombok.RequiredArgsConstructor;
 
-@RestController
 @RequestMapping("/comments")
+@RestController
+@RequiredArgsConstructor
 public class CommentResource {
 
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    private CommentMapper commentMapper;
-
-    public CommentResource(CommentService commentService, CommentMapper commentMapper) {
-        this.commentService = commentService;
-        this.commentMapper = commentMapper;
-    }
+    private final CommentMapper commentMapper;
 
     @GetMapping("/{id}")
     public CommentResponse findById(@PathVariable Long id) {

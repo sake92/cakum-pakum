@@ -8,16 +8,14 @@ import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 import ba.sake.cakum_pakum.rdb.repositories.BlogPostRepository;
 import ba.sake.cakum_pakum.rest.exceptions.AlreadyExistsProblem;
 import ba.sake.cakum_pakum.rest.exceptions.NotFoundProblem;
+import lombok.RequiredArgsConstructor;
 
-@Service
 @Transactional
+@Service
+@RequiredArgsConstructor
 public class BlogPostService {
 
-    private BlogPostRepository blogPostRepository;
-
-    public BlogPostService(BlogPostRepository blogPostRepository) {
-        this.blogPostRepository = blogPostRepository;
-    }
+    private final BlogPostRepository blogPostRepository;
 
     public BlogPostEntity create(BlogPostEntity blogPost) {
         checkUnique(blogPost.getContent());

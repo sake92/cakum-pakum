@@ -16,24 +16,18 @@ import ba.sake.cakum_pakum.rest.models.comment.CommentResponse;
 import ba.sake.cakum_pakum.rest.models.comment.CreateCommentRequest;
 import ba.sake.cakum_pakum.services.BlogPostService;
 import ba.sake.cakum_pakum.services.CommentService;
+import lombok.RequiredArgsConstructor;
 
-@RestController
 @RequestMapping("/posts")
+@RestController
+@RequiredArgsConstructor
 public class BlogPostResource {
 
-    private BlogPostService blogPostService;
-    private CommentService commentService;
+    private final BlogPostService blogPostService;
+    private final CommentService commentService;
 
-    private BlogPostMapper blogPostMapper;
-    private CommentMapper commentMapper;
-
-    public BlogPostResource(BlogPostService blogPostService, CommentService commentService,
-            BlogPostMapper blogPostMapper, CommentMapper commentMapper) {
-        this.blogPostService = blogPostService;
-        this.commentService = commentService;
-        this.blogPostMapper = blogPostMapper;
-        this.commentMapper = commentMapper;
-    }
+    private final BlogPostMapper blogPostMapper;
+    private final CommentMapper commentMapper;
 
     @PostMapping
     public BlogPostResponse create(

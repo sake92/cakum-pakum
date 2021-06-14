@@ -9,14 +9,14 @@ import ba.sake.cakum_pakum.rest.models.comment.CreateCommentRequest;
 public class CommentMapper {
 
     public CommentResponse entity2Response(CommentEntity entity) {
-        CommentResponse response = new CommentResponse();
+        var response = new CommentResponse();
         response.setId(entity.getId());
         response.setContent(entity.getContent());
         return response;
     }
 
     public CommentEntity createRequest2Entity(CreateCommentRequest request) {
-        CommentEntity entity = new CommentEntity();
+        var entity = new CommentEntity();
         entity.setContent(request.getContent());
         return entity;
     }
