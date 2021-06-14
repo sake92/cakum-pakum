@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<springdoc.version>1.5.7</springdoc.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<!-- automatically run annotation processors within the incremental compilation -->
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
@@ -58,7 +59,12 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.5.7</version>
+			<version>${springdoc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-data-rest</artifactId>
+			<version>${springdoc.version}</version>
 		</dependency>
 
 		<dependency>

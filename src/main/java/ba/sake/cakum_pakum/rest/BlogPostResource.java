@@ -2,6 +2,7 @@ package ba.sake.cakum_pakum.rest;
 
 import javax.validation.Valid;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,32 +30,38 @@ public class BlogPostResource {
     @PostMapping
     public BlogPostResponse create(
             @Valid @RequestBody CreateBlogPostRequest createBlogPostRequest) {
+
         var newBlogPost = BlogPostMapper.INSTANCE.createRequest2Entity(createBlogPostRequest);
         var createdBlogPost = blogPostService.create(newBlogPost);
         return BlogPostMapper.INSTANCE.entity2Response(createdBlogPost);
     }
 
     @GetMapping
-    public Page<BlogPostResponse> findAll() {
-        return blogPostService.findAll().map(BlogPostMapper.INSTANCE::entity2Response);
+    public Page<BlogPostResponse> findAll(Pageable pageable) {
+
+        return blogPostService.findAll(pageable).map(BlogPostMapper.INSTANCE::entity2Response);
     }
 
     @GetMapping("/{id}")
     public BlogPostResponse findById(@PathVariable Long id) {
+
         var blogPost = blogPostService.findById(id);
         return BlogPostMapper.INSTANCE.entity2Response(blogPost);
     }
 
     /* comments */
     @GetMapping("/{blogPostId}/comments")
-    public Page<CommentResponse> findCommentsByBlogPostId(@PathVariable Long blogPostId) {
-        return commentService.findByBlogPostId(blogPostId)
+    public Page<CommentResponse> findCommentsByBlogPostId(@PathVariable Long blogPostId,
+            Pageable pageable) {
+
+        return commentService.findByBlogPostId(blogPostId, pageable)
                 .map(CommentMapper.INSTANCE::entity2Response);
     }
 
     @PostMapping("/{blogPostId}/comments")
     public CommentResponse addComment(@PathVariable Long blogPostId,
             @Valid @RequestBody CreateCommentRequest createCommentRequest) {
+
         var newComment = CommentMapper.INSTANCE.createRequest2Entity(createCommentRequest);
         var createdComment = commentService.create(blogPostId, newComment);
         return CommentMapper.INSTANCE.entity2Response(createdComment);

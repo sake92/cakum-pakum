@@ -33,10 +33,10 @@ public class CommentService {
         return maybeComment.orElseThrow(() -> new NotFoundProblem("Comment", id));
     }
 
-    public Page<CommentEntity> findByBlogPostId(Long blogPostId) {
+    public Page<CommentEntity> findByBlogPostId(Long blogPostId, Pageable pageable) {
 
         var blogPost = findBlogPostById(blogPostId);
-        return commentRepository.findByBlogPost(blogPost, Pageable.unpaged());
+        return commentRepository.findByBlogPost(blogPost, pageable);
     }
 
     private BlogPostEntity findBlogPostById(Long blogPostId) {

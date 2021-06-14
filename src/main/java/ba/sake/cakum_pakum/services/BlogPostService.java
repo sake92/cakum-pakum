@@ -18,20 +18,24 @@ public class BlogPostService {
     private final BlogPostRepository blogPostRepository;
 
     public BlogPostEntity create(BlogPostEntity blogPost) {
+
         checkUnique(blogPost.getContent());
         return blogPostRepository.save(blogPost);
     }
 
-    public Page<BlogPostEntity> findAll() {
-        return blogPostRepository.findAll(Pageable.unpaged());
+    public Page<BlogPostEntity> findAll(Pageable pageable) {
+
+        return blogPostRepository.findAll(pageable);
     }
 
     public BlogPostEntity findById(Long id) {
+
         var maybeBlogPost = blogPostRepository.findById(id);
         return maybeBlogPost.orElseThrow(() -> new NotFoundProblem("Blog post", id));
     }
 
     private void checkUnique(String content) {
+
         var existingBlogPost = blogPostRepository.findOneByContent(content);
         if (existingBlogPost != null) {
             throw new AlreadyExistsProblem("Blog post", "content", content);
