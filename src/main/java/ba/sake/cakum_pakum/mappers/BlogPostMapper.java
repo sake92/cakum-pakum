@@ -1,14 +1,21 @@
 package ba.sake.cakum_pakum.mappers;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostResponse;
 import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostRequest;
 
-@Component
-public class BlogPostMapper {
+@Mapper 
+public interface BlogPostMapper {
+    
+    BlogPostMapper INSTANCE = Mappers.getMapper( BlogPostMapper.class );
+    
+     BlogPostResponse entity2Response(BlogPostEntity entity);
+     
+     BlogPostEntity createRequest2Entity(CreateBlogPostRequest request);
 
-    public BlogPostResponse entity2Response(BlogPostEntity entity) {
+  /*  public BlogPostResponse entity2Response(BlogPostEntity entity) {
         var response = new BlogPostResponse();
         response.setId(entity.getId());
         response.setContent(entity.getContent());
@@ -19,5 +26,5 @@ public class BlogPostMapper {
         var entity = new BlogPostEntity();
         entity.setContent(request.getContent());
         return entity;
-    }
+    }*/
 }

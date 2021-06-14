@@ -16,12 +16,10 @@ public class CommentResource {
 
     private final CommentService commentService;
 
-    private final CommentMapper commentMapper;
-
     @GetMapping("/{id}")
     public CommentResponse findById(@PathVariable Long id) {
         var comment = commentService.findById(id);
-        return commentMapper.entity2Response(comment);
+        return CommentMapper.INSTANCE.entity2Response(comment);
     }
 
 }

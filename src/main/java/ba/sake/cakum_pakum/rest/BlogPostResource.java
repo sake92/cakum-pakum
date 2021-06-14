@@ -26,40 +26,38 @@ public class BlogPostResource {
     private final BlogPostService blogPostService;
     private final CommentService commentService;
 
-    private final BlogPostMapper blogPostMapper;
-    private final CommentMapper commentMapper;
-
     @PostMapping
     public BlogPostResponse create(
             @Valid @RequestBody CreateBlogPostRequest createBlogPostRequest) {
-        var newBlogPost = blogPostMapper.createRequest2Entity(createBlogPostRequest);
+        var newBlogPost = BlogPostMapper.INSTANCE.createRequest2Entity(createBlogPostRequest);
         var createdBlogPost = blogPostService.create(newBlogPost);
-        return blogPostMapper.entity2Response(createdBlogPost);
+        return BlogPostMapper.INSTANCE.entity2Response(createdBlogPost);
     }
 
     @GetMapping
     public Page<BlogPostResponse> findAll() {
-        return blogPostService.findAll().map(blogPostMapper::entity2Response);
+        return blogPostService.findAll().map(BlogPostMapper.INSTANCE::entity2Response);
     }
 
     @GetMapping("/{id}")
     public BlogPostResponse findById(@PathVariable Long id) {
         var blogPost = blogPostService.findById(id);
-        return blogPostMapper.entity2Response(blogPost);
+        return BlogPostMapper.INSTANCE.entity2Response(blogPost);
     }
 
     /* comments */
     @GetMapping("/{blogPostId}/comments")
     public Page<CommentResponse> findCommentsByBlogPostId(@PathVariable Long blogPostId) {
-        return commentService.findByBlogPostId(blogPostId).map(commentMapper::entity2Response);
+        return commentService.findByBlogPostId(blogPostId)
+                .map(CommentMapper.INSTANCE::entity2Response);
     }
 
     @PostMapping("/{blogPostId}/comments")
     public CommentResponse addComment(@PathVariable Long blogPostId,
             @Valid @RequestBody CreateCommentRequest createCommentRequest) {
-        var newComment = commentMapper.createRequest2Entity(createCommentRequest);
+        var newComment = CommentMapper.INSTANCE.createRequest2Entity(createCommentRequest);
         var createdComment = commentService.create(blogPostId, newComment);
-        return commentMapper.entity2Response(createdComment);
+        return CommentMapper.INSTANCE.entity2Response(createdComment);
     }
 
 }
