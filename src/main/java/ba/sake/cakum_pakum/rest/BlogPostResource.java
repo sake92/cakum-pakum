@@ -8,15 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ba.sake.cakum_pakum.mappers.BlogPostMapper;
-import ba.sake.cakum_pakum.mappers.CommentMapper;
+import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
 import ba.sake.cakum_pakum.rest.models.blogpost.BlogPostResponse;
 import ba.sake.cakum_pakum.rest.models.blogpost.CreateBlogPostRequest;
-import ba.sake.cakum_pakum.rest.models.comment.CommentResponse;
-import ba.sake.cakum_pakum.rest.models.comment.CreateCommentRequest;
 import ba.sake.cakum_pakum.services.BlogPostService;
-import ba.sake.cakum_pakum.services.CommentService;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping("/posts")
@@ -25,7 +23,6 @@ import lombok.RequiredArgsConstructor;
 public class BlogPostResource {
 
     private final BlogPostService blogPostService;
-    private final CommentService commentService;
 
     @PostMapping
     public BlogPostResponse create(
@@ -36,35 +33,23 @@ public class BlogPostResource {
         return BlogPostMapper.INSTANCE.entity2Response(createdBlogPost);
     }
 
+    @GetMapping("/search")
+    public Page<BlogPostEntity> search(Pageable pageable, @RequestParam String content) {
+        
+        return blogPostService.search(pageable, content);
+    }
+
     @GetMapping
     public Page<BlogPostResponse> findAll(Pageable pageable) {
 
         return blogPostService.findAll(pageable).map(BlogPostMapper.INSTANCE::entity2Response);
     }
 
-    @GetMapping("/{id}")
-    public BlogPostResponse findById(@PathVariable Long id) {
+    @GetMapping("/{postId}")
+    public BlogPostResponse findById(@PathVariable Long postId) {
 
-        var blogPost = blogPostService.findById(id);
+        var blogPost = blogPostService.findById(postId);
         return BlogPostMapper.INSTANCE.entity2Response(blogPost);
-    }
-
-    /* comments */
-    @GetMapping("/{blogPostId}/comments")
-    public Page<CommentResponse> findCommentsByBlogPostId(@PathVariable Long blogPostId,
-            Pageable pageable) {
-
-        return commentService.findByBlogPostId(blogPostId, pageable)
-                .map(CommentMapper.INSTANCE::entity2Response);
-    }
-
-    @PostMapping("/{blogPostId}/comments")
-    public CommentResponse addComment(@PathVariable Long blogPostId,
-            @Valid @RequestBody CreateCommentRequest createCommentRequest) {
-
-        var newComment = CommentMapper.INSTANCE.createRequest2Entity(createCommentRequest);
-        var createdComment = commentService.create(blogPostId, newComment);
-        return CommentMapper.INSTANCE.entity2Response(createdComment);
     }
 
 }

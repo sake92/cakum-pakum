@@ -27,15 +27,16 @@ public class CommentService {
         return comment;
     }
 
-    public CommentEntity findById(Long id) {
+    public CommentEntity findById(Long postId, Long id) {
 
+        findBlogPostById(postId);
         var maybeComment = commentRepository.findById(id);
         return maybeComment.orElseThrow(() -> new NotFoundProblem("Comment", id));
     }
 
-    public Page<CommentEntity> findByBlogPostId(Long blogPostId, Pageable pageable) {
+    public Page<CommentEntity> findByBlogPostId(Long postId, Pageable pageable) {
 
-        var blogPost = findBlogPostById(blogPostId);
+        var blogPost = findBlogPostById(postId);
         return commentRepository.findByBlogPost(blogPost, pageable);
     }
 

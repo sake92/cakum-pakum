@@ -15,8 +15,8 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String content;
+
     @ManyToOne
     private BlogPostEntity blogPost;
-
-    private String content;
 }
