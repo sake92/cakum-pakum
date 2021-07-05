@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ba.sake.cakum_pakum.mappers.CommentMapper;
+import ba.sake.cakum_pakum.rest.mappers.CommentMapper;
 import ba.sake.cakum_pakum.rest.models.comment.CommentResponse;
 import ba.sake.cakum_pakum.rest.models.comment.CreateCommentRequest;
 import ba.sake.cakum_pakum.services.CommentService;

@@ -5,7 +5,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ba.sake.cakum_pakum.rdb.models.BlogPostEntity;
-import ba.sake.cakum_pakum.rdb.models.QBlogPostEntity;
 import ba.sake.cakum_pakum.rdb.repositories.BlogPostRepository;
 import ba.sake.cakum_pakum.rest.exceptions.AlreadyExistsProblem;
 import ba.sake.cakum_pakum.rest.exceptions.NotFoundProblem;
@@ -31,9 +30,7 @@ public class BlogPostService {
 
     public Page<BlogPostEntity> search(Pageable pageable, String content) {
 
-        var blogPost = QBlogPostEntity.blogPostEntity;
-        var predicate = blogPost.content.likeIgnoreCase("%" + content + "%");
-        return blogPostRepository.findAll(predicate, pageable);
+        return blogPostRepository.search(pageable, content);
     }
 
     public BlogPostEntity findById(Long id) {

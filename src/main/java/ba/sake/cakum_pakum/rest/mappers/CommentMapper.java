@@ -1,4 +1,4 @@
-package ba.sake.cakum_pakum.mappers;
+package ba.sake.cakum_pakum.rest.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
